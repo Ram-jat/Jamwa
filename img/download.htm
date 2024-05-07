@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="en-US">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.4",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let r=e.getAttribute("data-rocket-src");if(r&&0!==r.indexOf("data:")){0===r.indexOf("//")&&(r=location.protocol+r);try{let i=new URL(r).origin;i!==location.origin&&t.push({src:i,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(n){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._pendingWebpackRequests(this),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){if(await this._littleBreath(),!0===t.noModule&&"noModule"in HTMLScriptElement.prototype){t.setAttribute("data-rocket-status","skipped");return}return new Promise(navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(){let t={};function e(e,r){!function e(r){!t[r]&&(t[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.remove.apply(r,arguments)});function i(e){return t[r].eventsToRewrite.indexOf(e)>=0?"rocket-"+e:e}}(e),t[e].eventsToRewrite.push(r)}function r(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}e(document,"DOMContentLoaded"),e(window,"DOMContentLoaded"),e(window,"load"),e(window,"pageshow"),e(document,"readystatechange"),r(document,"onreadystatechange"),r(window,"onload"),r(window,"onpageshow")}_delayJQueryReady(t){let e;function r(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}function i(i){if(i&&i.fn&&!t.allJQueries.includes(i)){i.fn.ready=i.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(i):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(i)),i([])};let n=i.fn.on;i.fn.on=i.fn.init.prototype.on=function(){return this[0]===window&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=r(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{let e=arguments[0][t];delete arguments[0][t],arguments[0][r(t)]=e})),n.apply(this,arguments),this},t.allJQueries.push(i)}e=i}i(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){i(t)}})}async _pendingWebpackRequests(t){let e=document.querySelector("script[data-webpack]");async function r(){return new Promise(t=>{e.addEventListener("load",t),e.addEventListener("error",t)})}e&&(await r(),await t._requestAnimFrame(),await t._pendingWebpackRequests(t))}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v21.3 (Yoast SEO v22.2) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Jamwa : Buy Affordable Silver Jewellery Online</title>
+	<meta name="description" content="Jamwa is an online silver jewellery store featuring high-quality, affordable designs. Jamwa offers perfect range of trendy fashion jewellery for your loved ones." />
+	<link rel="canonical" href="https://jamwa.in/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Home Page" />
+	<meta property="og:description" content="Jamwa is an online silver jewellery store featuring high-quality, affordable designs. Jamwa offers perfect range of trendy fashion jewellery for your loved ones." />
+	<meta property="og:url" content="https://jamwa.in/" />
+	<meta property="og:site_name" content="Jamwa : Premium Quality Products | Buy Online" />
+	<meta property="article:modified_time" content="2023-12-30T14:25:49+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://jamwa.in/","url":"https://jamwa.in/","name":"Jamwa : Buy Affordable Silver Jewellery Online","isPartOf":{"@id":"https://jamwa.in/#website"},"about":{"@id":"https://jamwa.in/#organization"},"datePublished":"2023-12-29T17:42:19+00:00","dateModified":"2023-12-30T14:25:49+00:00","description":"Jamwa is an online silver jewellery store featuring high-quality, affordable designs. Jamwa offers perfect range of trendy fashion jewellery for your loved ones.","breadcrumb":{"@id":"https://jamwa.in/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://jamwa.in/"]}]},{"@type":"BreadcrumbList","@id":"https://jamwa.in/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"https://jamwa.in/#website","url":"https://jamwa.in/","name":"Jamwa : Premium Quality Products | Buy Online","description":"","publisher":{"@id":"https://jamwa.in/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://jamwa.in/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://jamwa.in/#organization","name":"Jamwa : Premium Quality Products | Buy Online","url":"https://jamwa.in/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://jamwa.in/#/schema/logo/image/","url":"https://jamwa.in/wp-content/uploads/2023/12/jamwai.png","contentUrl":"https://jamwa.in/wp-content/uploads/2023/12/jamwai.png","width":336,"height":302,"caption":"Jamwa : Premium Quality Products | Buy Online"},"image":{"@id":"https://jamwa.in/#/schema/logo/image/"}}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="Jamwa : Premium Quality Products | Buy Online &raquo; Feed" href="https://jamwa.in/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Jamwa : Premium Quality Products | Buy Online &raquo; Comments Feed" href="https://jamwa.in/comments/feed/" />
+<script type="rocketlazyloadscript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/jamwa.in\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.3"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://jamwa.in/wp-includes/css/dist/block-library/style.min.css?ver=6.4.3' media='all' />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link data-minify="1" rel='stylesheet' id='woocommerce-layout-css' href='https://jamwa.in/wp-content/cache/min/1/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=1710406145' media='all' />
+<link data-minify="1" rel='stylesheet' id='woocommerce-smallscreen-css' href='https://jamwa.in/wp-content/cache/min/1/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=1710406145' media='only screen and (max-width: 768px)' />
+<link data-minify="1" rel='stylesheet' id='woocommerce-general-css' href='https://jamwa.in/wp-content/cache/min/1/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=1710406145' media='all' />
+<style id='woocommerce-inline-inline-css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel='stylesheet' id='aws-style-css' href='https://jamwa.in/wp-content/plugins/advanced-woo-search/assets/css/common.min.css?ver=3.02' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style1-css' href='https://jamwa.in/wp-content/themes/hello-elementor/assets/css/bootstrap.min.css?ver=2.9.0' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style2-css' href='https://jamwa.in/wp-content/themes/hello-elementor/assets/css/owl.carousel.min.css?ver=2.9.0' media='all' />
+<link data-minify="1" rel='stylesheet' id='hello-elementor-theme-style3-css' href='https://jamwa.in/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/css/style.css?ver=1710406145' media='all' />
+<link rel='stylesheet' id='hello-elementor-css' href='https://jamwa.in/wp-content/themes/hello-elementor/style.min.css?ver=2.9.0' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://jamwa.in/wp-content/themes/hello-elementor/theme.min.css?ver=2.9.0' media='all' />
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2" id="wp-polyfill-inert-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.14.0" id="regenerator-runtime-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1" id="wp-hooks-js"></script>
+<script src="https://stats.wp.com/w.js?ver=202412" id="woo-tracks-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.8.6.1" id="jquery-blockui-js" defer data-wp-strategy="defer"></script>
+<script id="wc-add-to-cart-js-extra">
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/jamwa.in\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=8.6.1" id="wc-add-to-cart-js" defer data-wp-strategy="defer"></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.8.6.1" id="js-cookie-js" defer data-wp-strategy="defer"></script>
+<script id="woocommerce-js-extra">
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=8.6.1" id="woocommerce-js" defer data-wp-strategy="defer"></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/themes/hello-elementor/assets/js/code.jquery.com_jquery-3.7.0.min.js?ver=6.4.3" id="script-nnamde-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/themes/hello-elementor/assets/js/bootstrap.min.js?ver=6.4.3" id="script-nnamde1-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/themes/hello-elementor/assets/js/owl.carousel.min.js?ver=6.4.3" id="script-nnamde2-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://jamwa.in/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/js/script.js?ver=1710406145" id="script-nnamde3-js" defer></script>
+<link rel="https://api.w.org/" href="https://jamwa.in/wp-json/" /><link rel="alternate" type="application/json" href="https://jamwa.in/wp-json/wp/v2/pages/264" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://jamwa.in/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.4.3" />
+<meta name="generator" content="WooCommerce 8.6.1" />
+<link rel='shortlink' href='https://jamwa.in/' />
+<link rel="alternate" type="application/json+oembed" href="https://jamwa.in/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fjamwa.in%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://jamwa.in/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fjamwa.in%2F&#038;format=xml" />
+	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<link rel="icon" href="https://jamwa.in/wp-content/uploads/2023/12/Frame-2-1-100x100.png" sizes="32x32" />
+<link rel="icon" href="https://jamwa.in/wp-content/uploads/2023/12/Frame-2-1.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://jamwa.in/wp-content/uploads/2023/12/Frame-2-1.png" />
+<meta name="msapplication-TileImage" content="https://jamwa.in/wp-content/uploads/2023/12/Frame-2-1.png" />
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<meta name="google-site-verification" content="icUM01SAY0xsj-dVOXUXW1SiPvRtlrkoB9y8JaMNMnk" />
+</head>
+<body class="home page-template-default page page-id-264 wp-custom-logo theme-hello-elementor woocommerce-no-js">
+<header>
+        <div class="bg-sept py-2">
+            <div class="container">
+                <div class="topbar">
+					<div class="row">
+						<div class="col-md-6  d-md-flex d-none align-items-center justify-content-start">
+							<p class="mb-0"> <span class="text-main fw-bold">GSTIN:</span> 08DXYPA4076C1Z9 <span class="fs-14">(NeoIT)</span></p>
+						</div>
+						<div class="col-md-6  text-lg-end d-flex align-items-center justify-content-end">
+							<p class="mb-0 pe-3 border-end border-2 border-dark"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/shipping-card.svg"
+                            class="img-fluid me-2" alt="">Free Shipping*</p>
+                    <p class="mb-0 ps-3 "><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/help-center.svg" class="img-fluid me-2" alt="">Help Center</p>
+						</div>
+					</div>
+                    
+
+                </div>
+            </div>
+
+        </div>
+        <div class="midHeader container py-2">
+
+
+            <div class="row">
+                <div class="col-4 m-none callPhone d-flex align-items-center">
+                    <div class="calIcon d-flex align-items-center justify-content-center">
+                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/call-btn.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="callBtn ms-2">
+                        <p class="fw-bold text-main mb-0">CALL US</p>
+                        <p class="mb-0 fw-bold fs-16">(+91) 8005939131</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-6 d-flex justify-content-center centerLogo align-items-center">
+                    <button class="de-none vj-humburger" onclick="showMenu();"><span class="vjMenu"></span></button>
+                    <a class="navbar-brand" href="https://jamwa.in"> <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/jamwa-logo.svg" class="img-fluid"
+                            alt=""></a>
+                </div>
+                <div class="col-lg-4 col-6 sideMobile d-flex justify-content-end align-items-center">
+                    <div class="de-none" onclick="showSearch()">
+                        <a href="javascript:void(0)"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/search.svg" alt=""></a>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center m-none">
+            <div class="aws-container" data-url="/?wc-ajax=aws_action" data-siteurl="https://jamwa.in" data-lang="" data-show-loader="true" data-show-more="true" data-show-page="true" data-ajax-search="true" data-show-clear="true" data-mobile-screen="false" data-use-analytics="false" data-min-chars="1" data-buttons-order="3" data-timeout="300" data-is-mobile="false" data-page-id="264" data-tax="" ><form class="aws-search-form" action="https://jamwa.in/" method="get" role="search" ><div class="aws-wrapper"><label class="aws-search-label" for="65fa5382d3fa4">Search</label><input type="search" name="s" id="65fa5382d3fa4" value="" class="aws-search-field" placeholder="Search" autocomplete="off" /><input type="hidden" name="post_type" value="product"><input type="hidden" name="type_aws" value="true"><div class="aws-search-clear"><span>×</span></div><div class="aws-loader"></div></div><div class="aws-search-btn aws-form-btn"><span class="aws-search-btn_icon"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></span></div></form></div>						 
+                    </div>
+                    <ul class="d-flex list-unstyled mb-0">
+                        <li class="px-3"><a href="https://jamwa.in/cart/" class="position-relative"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/cart.svg" class="img-fluid"
+                                    alt=""> <span
+                                    class="position-absolute top-0 start-100 roude  text-white bg-main translate-middle rounded-circle">0                                </span></a></li>
+                        <li><a href="https://jamwa.in/my-account/"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/user.svg" class="img-fluid" alt=""></a></li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg border-top border-bottom py-0">
+            <div class="container">
+
+
+                <div class="collapse navbar-collapse vjMenuItems d-flex justify-content-between" id="navbarNav">
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item megaMenuVj">
+                            <a class="nav-link ps-0 position-relative" href="#" onclick="showSub(firstMenu)"> Sterling Silver <img
+                                    src="img/chevron.svg" class="img-fluid arowImg" alt=""> <span class="newDecor badge bg-danger position-absolute start-0">Premium!</span></a>
+                            <div class="megaMenu" id="firstMenu">
+                                <span class="de-none" onclick="showSub(firstMenu)">&#10229;</span>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <p class="fw-bold mb-0 border-bottom footUl pb-1 border-2 mb-2"
+                                            onclick="showFoot(oneSub)">For Girls
+                                        </p>
+                                        <ul class="list-unstyled hiFoot  mainMenulist" id="oneSub">
+                                            <li><a href="https://jamwa.in/product-category/bangles/">Bangles</a></li>
+                                           
+                                            <li><a href="https://jamwa.in/product-category/earings/">Earings</a></li>
+                                            <li><a href="https://jamwa.in/product-category/ladies-kada/">Ladies Kada</a></li>
+                                            <li><a href="https://jamwa.in/product-category/ladies-nose-pin/">Ladies Nose Pin</a></li>
+<li><a href="https://jamwa.in/product-category/mangal-sutra/">Mangal Sutra</a></li>
+											<li><a href="https://jamwa.in/product-category/necklace/">Necklace</a></li>
+											<li><a href="https://jamwa.in/product-category/pendant/">Pendant</a></li>
+											
+										<li><a href="https://jamwa.in/product-category/studs/">	Studs</a></li>
+											<li><a href="https://jamwa.in/product-category/tops/">Tops</a></li>
+<li><a href="https://jamwa.in/product-category/toy-ring/">Toy Ring</a></li>
+
+
+
+                                        </ul>
+
+                                        
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p class="fw-bold mb-0 border-bottom footUl pb-1 border-2 mb-2"
+                                            onclick="showFoot(threeSub)">For Mens
+                                        </p>
+                                        <ul class="list-unstyled hiFoot  mainMenulist" id="threeSub">
+                                            <li><a href="https://jamwa.in/product-category/watch/">Watch</a></li>
+                                            <li><a href="https://jamwa.in/product-category/silver-sterling-kada/">Silver Kadas</a></li>
+                                            <li><a href="https://jamwa.in/product-category/bracelets/">Bracelets</a></li>
+                                            <li><a href="https://jamwa.in/product-category/chitai-kada	/">Chitai Kada</a></li>
+
+
+
+
+                                        </ul>
+
+<!--                                       <p class="fw-bold mb-0 border-bottom footUl pb-1 mt-4 border-2 mb-2"
+                                            onclick="showFoot(fourSub)">Handmade</p>
+                                        <ul class="list-unstyled hiFoot  mainMenulist" id="fourSub">
+                                            <li><a href="/product-category/">Resin Clocks</a></li>
+                                            <li><a href="/product-category/">Resin Keychain</a></li>
+                                            <li><a href="/product-category/">Mantra Frames</a></li>
+
+                                        </ul>  -->
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p class="fw-bold mb-0 border-bottom footUl pb-1 border-2 mb-2"
+                                            onclick="showFoot(fiveSub)">Gifts
+                                        </p>
+                                        <ul class="list-unstyled hiFoot  mainMenulist" id="fiveSub">
+                                              <li><a href="https://jamwa.in/product-category/chains/">Chains</a></li>
+<li><a href="https://jamwa.in/product-category/rings/">Rings</a></li>
+											<li><a href="https://jamwa.in/product-category/hasli/">Hasli</a></li>
+<li><a href="https://jamwa.in/product-category/najariya/">Najariya</a></li>
+<li><a href="https://jamwa.in/product-category/925-moortie/">925 Moortie</a></li>
+											<li><a href="https://jamwa.in/product-category/shree-krishana-set/">Shree Krishana Set</a></li>
+											<li><a href="https://jamwa.in/product-category/silver-articals/">Silver Articals</a></li>
+                                        </ul> 
+
+                                    </div>
+                                    <div class="col-lg-3 m-none">
+                                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/Premium.webp" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+                                <div class="bg-main p-2 text-center m-none">
+                                    <p class="mb-0 text-white"><span class="fw-bold">30% OFF The Shipping </span> Of
+                                        Your First Order With <span class="fw-bold">The Code: MEGA30</span></p>
+                                </div>
+                            </div>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link" href="https://jamwa.in/product-category/silver-collection-for-mens/">For Men's</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link" href="https://jamwa.in/product-category/silver-jewelery-for-girls/">For Girl's</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link" href="https://jamwa.in/product-category/sterling-silver">Silver Jewellery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://jamwa.in/product-category/smart-watches/">Smart Watchs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://jamwa.in/product-category/airpods/">AirPods</a>
+                        </li>
+                        
+                         
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://jamwa.in/product-category/mobile-cover/">Back Cover</a>
+                        </li>
+                         
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://jamwa.in/blogs/">Blogs</a>
+                        </li>
+                        <li class="nav-item de-none">
+                            <div class="col-4  callPhone callPhone2 d-flex">
+                                <div class="calIcon d-flex align-items-center justify-content-center">
+                                    <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/call-btn.svg" class="img-fluid" alt="">
+                                </div>
+                                <div class="callBtn ms-2">
+                                    <p class="fw-bold text-main mb-0">CALL US</p>
+                                    <p class="mb-0 fw-bold fs-16">(+91) 8005939131</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav customize">
+                        <li class="nav-item">
+                             <a class="nav-link" href="https://wa.me/917742737030"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/chat-us.svg" class="img-fluid" alt="chat us"/> WhatsApp Support</a>
+                        </li>
+                    </ul>
+                    <div class="closeBtn de-none" onclick="showMenu()">
+                        &times;
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- search sidebar  -->
+        <div class="searchbar" id="searchBox">
+			<span class="input-group-text" id="basic-addon1"><span class="de-non"
+                        onclick="showSearch()">&#10229;</span></span>
+            <div class="aws-container" data-url="/?wc-ajax=aws_action" data-siteurl="https://jamwa.in" data-lang="" data-show-loader="true" data-show-more="true" data-show-page="true" data-ajax-search="true" data-show-clear="true" data-mobile-screen="false" data-use-analytics="false" data-min-chars="1" data-buttons-order="3" data-timeout="300" data-is-mobile="false" data-page-id="264" data-tax="" ><form class="aws-search-form" action="https://jamwa.in/" method="get" role="search" ><div class="aws-wrapper"><label class="aws-search-label" for="65fa5382d41b2">Search</label><input type="search" name="s" id="65fa5382d41b2" value="" class="aws-search-field" placeholder="Search" autocomplete="off" /><input type="hidden" name="post_type" value="product"><input type="hidden" name="type_aws" value="true"><div class="aws-search-clear"><span>×</span></div><div class="aws-loader"></div></div><div class="aws-search-btn aws-form-btn"><span class="aws-search-btn_icon"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></span></div></form></div>            <div class="searchCata px-3 mb-2">
+                <p class="fs-14 mb-2 fw-bold">Catagories</p>
+                <div class="d-flex flex-wrap justify-content-start align-items-center ">
+                    <a href="https://jamwa.in/product-category/necklace/" class="searchCat me-2">Necklace</a>
+                    <a href="https://jamwa.in/product-category/pendant/" class="searchCat me-2">Pendant</a>
+                    <a href="https://jamwa.in/product-category/silver-sterling-kada/" class="searchCat me-2">Silver Kadas</a>
+
+
+                </div>
+            </div>
+            <div class="Searchcontent"></div>
+        </div>
+    </header><section class="pt-3 mainColection">
+        <div class="container">
+            <div class="owl-carousel mobileCollection">
+                <a href="https://jamwa.in/product-category/smart-watches/" class="item d-flex align-items-center flex-column justify-content-center">
+                    <div class="collecxtion mb-2">
+                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/smart-watchs.svg" class="img-fluid" alt="">
+                    </div>
+                    <p class="mb-0 fs-11">Watchs</p>
+
+</a>
+                <a href="https://jamwa.in/product-category/airpods/" class="item d-flex align-items-center flex-column justify-content-center">
+                    <div class="collecxtion mb-2">
+                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/airpods.svg" class="img-fluid" alt="">
+                    </div>
+                    <p class="mb-0 fs-11">AirPods</p>
+
+</a>
+                <a href="https://jamwa.in/product-category/sterling-silver/" class="item d-flex align-items-center flex-column justify-content-center">
+                    <div class="collecxtion mb-2">
+                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/jewellery.svg" class="img-fluid" alt="">
+                    </div>
+                    <p class="mb-0 fs-11">Jewellery</p>
+
+</a>
+                <a href="https://jamwa.in/product-category/mobile-cover/" class="item d-flex align-items-center flex-column justify-content-center">
+                    <div class="collecxtion mb-2">
+                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/phone-cover.svg" class="img-fluid" alt="">
+                    </div>
+                    <p class="mb-0 fs-11">Back Cover</p>
+
+</a>
+
+            </div>
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+							 
+                            
+                        </div>
+                        <div class="carousel-inner">
+							<div class="carousel-item active">
+								<a href="https://jamwa.in/product-category/silver-sterling-kada/" class="text-decoration-none">
+                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/sterling-kadas-for-sale.webp" class="d-block w-100" alt="...">
+								</a>
+                            </div>
+                            <div class="carousel-item">
+								<a href="https://jamwa.in/product-category/smart-watches/" class="text-decoration-none">
+                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/best-smart-watch-seller.webp" class="d-block w-100" alt="...">
+								</a>
+                            </div>
+							
+							 
+                            <div class="carousel-item">
+								<a href="https://jamwa.in/product-category/airpods/" class="text-decoration-none">
+                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/huge-rings-for-couple.webp" class="d-block w-100" alt="...">
+								</a>
+                            </div>
+                            
+                        </div>
+                        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button> -->
+                    </div>
+                </div>
+                <div class="col-md-6 grid-mobile">
+                    <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/streling-silver-whole-saler.webp" class="img-fluid mb-4" alt="">
+                    <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/get-regular-order-50-off.webp" class="img-fluid" alt="">
+
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="py-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="d-flex fwt-mobile border-end align-items-center justify-content-center">
+                                <div><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/easy-return-icon1.svg" class="img-fluid" alt="">
+
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-0 feat">Easy <br> Return</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="d-flex fwt-mobile border-end align-items-center justify-content-center">
+                                <div><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/secure-checkout-icon1.svg" class="img-fluid" alt="">
+
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-0 feat">Secure <br> Checkout</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="d-flex fwt-mobile border-end align-items-center justify-content-center">
+                                <div><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/satisfaction-guarantee1.svg" class="img-fluid" alt="">
+
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-0 feat">Satisfaction <br> Guarantee</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="d-flex fwt-mobile align-items-center justify-content-center">
+                                <div><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/cod-icon1.svg" class="img-fluid" alt="">
+
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-0 feat">Cash on <br> Delivery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pb-4 pt-2">
+        <div class="container">
+            <h2 class="border-bottom pb-3">Trending Categories</h2>
+            <div class="mt-4">
+                <div class="owl-carousel crousalCol">
+                    <div class="itGo">
+                        <a href="https://jamwa.in/product-category/oxidised-92-5-silver/" class="productLink">
+                            <div class="cardProduct">
+                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/pure-oxidised-silver.webp" class="img-fluid mb-3" alt="">
+                                <h5 class="mb-1">Oxidised 92.5 Silver</h5>
+                                <p class="fs-14">Explore exquisite Sterling Silver 92.5 Oxidized Jewelry at Jamwa.in</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="itGo">
+                        <a href="https://jamwa.in/product-category/italian-92-5-silver/" class="productLink">
+                            <div class="cardProduct">
+                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/italian-silver-jewellery.webp" class="img-fluid mb-3" alt="">
+                                <h5 class="mb-1">Italian 92.5 Silver</h5>
+                                <p class="fs-14">Discover the timeless elegance of Italian Silver Jewelry at Jamwa.in</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="itGo">
+                        <a href="https://jamwa.in/product-category/indian-92-5-silver/" class="productLink">
+                            <div class="cardProduct">
+                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/indian-92.5silver-jeweller.webp" class="img-fluid mb-3" alt="">
+                                <h5 class="mb-1">Indian 92.5 Silver</h5>
+                                <p class="fs-14">Experience the allure of Indian Silver 92.5 Jewelry at Jamwa.in</p>
+                            </div>
+                        </a>
+                    </div>
+                     
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+ <section class="d-md-block d-none">
+	  <div class="container"><div class=" p-2 rounded d-flex align-items-center justify-content-center wts-text" style="background: #f0f8ff;">🎉 <span class="me-1  fw-bold">LIMITED TIME OFFER:</span> Get an EXTRA 10% DISCOUNT 🎁 Use Code: <span class="mx-1 fw-bold"> MEGA30 </span> at Checkout</div></div>
+</section>
+    <section class="pb-4">
+        <div class="container">
+            <h2 class="mb-4  border-bottom pb-3">Best sellers</h2>
+            <div class="owl-carousel productCro">
+                            <div class="item">
+                    <a href="https://jamwa.in/product/product-name-4mm-925-sterling-silver-handmade-solid-vintage-byzantine-design-chain-heavy-necklace-amazing-luxury-royal-gifting-designer-jewelry-ch563/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2024/01/5-1-1.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://jamwa.in/wp-content/uploads/2024/01/5-1-1.webp 1080w, https://jamwa.in/wp-content/uploads/2024/01/5-1-1-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/01/5-1-1-1024x1024.webp 1024w, https://jamwa.in/wp-content/uploads/2024/01/5-1-1-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/01/5-1-1-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/01/5-1-1-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/01/5-1-1-100x100.webp 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">Product Name:  4mm 925 sterling silver handmade solid vintage byzantine design chain heavy necklace, amazing luxury royal gifting designer jewelry ch563</p>
+							                                                                                                     <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>7,999.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>12,999.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/chitai-flexible-kada-single-sterling-silver-92-5/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2023/12/sterling-toe-kada-jamwa.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2023/12/sterling-toe-kada-jamwa.webp 1080w, https://jamwa.in/wp-content/uploads/2023/12/sterling-toe-kada-jamwa-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2023/12/sterling-toe-kada-jamwa-1024x1024.webp 1024w, https://jamwa.in/wp-content/uploads/2023/12/sterling-toe-kada-jamwa-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2023/12/sterling-toe-kada-jamwa-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2023/12/sterling-toe-kada-jamwa-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2023/12/sterling-toe-kada-jamwa-100x100.webp 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">Chitai Flexible Kada Single Sterling Silver 92.5</p>
+							                                                                                                     <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>7,499.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>10,720.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                               
+                            </div>
+                            <div class="ms-1">1 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-silver-guthai-lion-kada-for-men-silver-kada-silver-bracelet/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1000" height="1000" src="https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three.webp 1000w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-100x100.webp 100w" sizes="(max-width: 1000px) 100vw, 1000px" />                            </div>
+                            <p class="product-title mb-1">925 Sterling Silver Guthai Lion Kada For Men/Silver Kada/Silver Bracelet</p>
+							                                                                                                     <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>7,599.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>11,999.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                               
+                            </div>
+                            <div class="ms-1">6 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-silver-handmade-plain-shiny-design-gorgeous-customized-foot-bracelet-ankle-kada-excellent-hanging-drops-belly-dance/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2024/02/1.png" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/02/1.png 1080w, https://jamwa.in/wp-content/uploads/2024/02/1-300x300.png 300w, https://jamwa.in/wp-content/uploads/2024/02/1-1024x1024.png 1024w, https://jamwa.in/wp-content/uploads/2024/02/1-150x150.png 150w, https://jamwa.in/wp-content/uploads/2024/02/1-768x768.png 768w, https://jamwa.in/wp-content/uploads/2024/02/1-600x600.png 600w, https://jamwa.in/wp-content/uploads/2024/02/1-100x100.png 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">925 sterling silver handmade plain shiny design gorgeous customized foot bracelet, ankle kada excellent hanging drops belly dance</p>
+							                                                                                                     <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>8,100.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>11,735.28</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-silver-handmade-vintage-design-amulet-box-pendant-single-line-beaded-necklace-tribal-ethnic-mantra-box-pendant-jewelry/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2024/01/2-5.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/01/2-5.webp 1080w, https://jamwa.in/wp-content/uploads/2024/01/2-5-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/01/2-5-1024x1024.webp 1024w, https://jamwa.in/wp-content/uploads/2024/01/2-5-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/01/2-5-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/01/2-5-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/01/2-5-100x100.webp 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">925 Sterling silver handmade vintage design amulet box pendant single line beaded necklace tribal ethnic mantra box pendant jewelry</p>
+							                                                                                                     <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>6,999.44</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>8,520.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                                </div>
+			
+        </div>
+    </section>
+    
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 py-5">
+                    <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/sterling-92.5-hall-mark.webp" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-6 py-5">
+                    <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/designer-silver-jewellery.webp" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="py-1">
+        <div class="container">
+			<div class="owl-carousel vjNew">
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/925-moortie/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Moortie
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Sterling Silver
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/moortie-sterling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/earings/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Earings
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Oxidiesed Silver
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/earings-sterling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/silver-sterling-kada/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Kada's
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Oxidiesed Kada's
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/kada-sterling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/necklace/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Necklace
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Sterling Silver
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/necklace-sterling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/rings/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Ring's
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Sterling Silver
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/ring-streling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/silver-articals/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Statue
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Sterling Silver
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/statues-sterling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/bracelets/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Bracelets
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						92.5 Silver
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/bracelets-sterling-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/chains/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Chain
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Sterling 92.5
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/chain-streling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/pendant/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Pendant
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Pure Siver
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/pendant-sterling-silver.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/wallet/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Wallet
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Ladies Wallets
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/wallet-sterling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				<div class="itt">
+					<a href="https://jamwa.in/product-category/watch/" class="d-flex flex-column align-items-center text-center cat-sm justify-content-center text-decoration-none ">
+						<h5 class="text-main mb-0">
+							Watche's
+						</h5>
+						<p class="fs-14 text-dark mb-0">
+						Sterling Silver
+						</p>
+						<img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/watch-sterling-silver-india.webp" class="img-fluid" alt=""/>
+					</a>
+				</div>
+				
+				
+				 
+			</div>
+	
+		</div>
+    </section>
+<section class="py-4">
+        <div class="container">
+            <h2 class="mb-4  border-bottom pb-3">Sterling Silver</h2>
+            <div class="owl-carousel productCro">
+                            <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-silver-handmade-plain-shiny-design-gorgeous-customized-foot-bracelet-ankle-kada-excellent-hanging-drops-belly-dance/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2024/02/1.png" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/02/1.png 1080w, https://jamwa.in/wp-content/uploads/2024/02/1-300x300.png 300w, https://jamwa.in/wp-content/uploads/2024/02/1-1024x1024.png 1024w, https://jamwa.in/wp-content/uploads/2024/02/1-150x150.png 150w, https://jamwa.in/wp-content/uploads/2024/02/1-768x768.png 768w, https://jamwa.in/wp-content/uploads/2024/02/1-600x600.png 600w, https://jamwa.in/wp-content/uploads/2024/02/1-100x100.png 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">925 sterling silver handmade plain shiny design gorgeous customized foot bracelet, ankle kada excellent hanging drops belly dance</p>
+                                                                                                                                <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>8,100.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>11,735.28</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/pure-925-sterling-silver-snake-chain-single-string-ankle-bracelet-excellent-belly-dance-customized-trendy-fancy-anklet-foot-bracelet/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2024/02/3-6.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/02/3-6.webp 1080w, https://jamwa.in/wp-content/uploads/2024/02/3-6-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/02/3-6-1024x1024.webp 1024w, https://jamwa.in/wp-content/uploads/2024/02/3-6-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/02/3-6-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/02/3-6-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/02/3-6-100x100.webp 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">Pure 925 sterling silver snake chain single string ankle bracelet, excellent belly dance customized trendy fancy anklet foot bracelet</p>
+                                                                                                                                <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>5,900.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>8,519.29</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-vintage-parrot-bird-style-sterling-silver-handmade-anklets-bracelet-with-amazing-hanging-drops-belly-dance-jewelry/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2024/02/1-5.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/02/1-5.webp 1080w, https://jamwa.in/wp-content/uploads/2024/02/1-5-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/02/1-5-1024x1024.webp 1024w, https://jamwa.in/wp-content/uploads/2024/02/1-5-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/02/1-5-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/02/1-5-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/02/1-5-100x100.webp 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">925 sterling Vintage parrot bird style sterling silver handmade anklets bracelet with amazing hanging drops belly dance jewelry</p>
+                                                                                                                                <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>15,000.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>21,796.29</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/handmade-fabulous-snake-chain-925-sterling-silver-ankle-bracelet-silver-anklets-foot-bracelet-amazing-belly-dance-jewelry-gift-her/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2024/02/3-4.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/02/3-4.webp 1080w, https://jamwa.in/wp-content/uploads/2024/02/3-4-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/02/3-4-1024x1024.webp 1024w, https://jamwa.in/wp-content/uploads/2024/02/3-4-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/02/3-4-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/02/3-4-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/02/3-4-100x100.webp 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">Handmade fabulous snake chain 925 sterling silver ankle bracelet, silver anklets, foot bracelet amazing belly dance jewelry gift her</p>
+                                                                                                                                <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>4,500.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>6,479.28</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-silver-custom-made-anklets-best-anklets-bracelet-foot-bracelet-belly-dance-jewelry-elegant-tribal-ethnic-anklets/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1080" height="1080" src="https://jamwa.in/wp-content/uploads/2024/02/5-3.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/02/5-3.webp 1080w, https://jamwa.in/wp-content/uploads/2024/02/5-3-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/02/5-3-1024x1024.webp 1024w, https://jamwa.in/wp-content/uploads/2024/02/5-3-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/02/5-3-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/02/5-3-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/02/5-3-100x100.webp 100w" sizes="(max-width: 1080px) 100vw, 1080px" />                            </div>
+                            <p class="product-title mb-1">925 sterling silver custom made anklets, best anklets bracelet, foot bracelet, belly dance jewelry, elegant tribal ethnic anklets</p>
+                                                                                                                                <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>8,200.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>11,856.29</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                                </div>  
+			<div class="d-flex align-item-center justify-content-end">
+				<a href="https://jamwa.in/product-category/sterling-silver/" class="fw-bold text-decoration-none">View All&#8594;</a>
+			</div>
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="container">
+            <h2 class="mb-4  border-bottom pb-3">92.5 Silver Kada's</h2>
+            <div class="owl-carousel productCro">
+                            <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-silver-evil-eye-bracelet-silver-adjustable-drawstring-bracelet/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1000" height="1000" src="https://jamwa.in/wp-content/uploads/2024/01/evel-eye-braceletes.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/01/evel-eye-braceletes.webp 1000w, https://jamwa.in/wp-content/uploads/2024/01/evel-eye-braceletes-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/01/evel-eye-braceletes-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/01/evel-eye-braceletes-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/01/evel-eye-braceletes-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/01/evel-eye-braceletes-100x100.webp 100w" sizes="(max-width: 1000px) 100vw, 1000px" />                            </div>
+                            <p class="product-title mb-1">925 Sterling Silver Evil Eye Bracelet Silver &#8211; Adjustable Drawstring Bracelet</p>
+                                                                                                                                 <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>2,999.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>4,599.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-silver-guthai-lion-kada-for-men-silver-kada-silver-bracelet/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1000" height="1000" src="https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three.webp 1000w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/01/oxide-guthai-kada-for-men-three-100x100.webp 100w" sizes="(max-width: 1000px) 100vw, 1000px" />                            </div>
+                            <p class="product-title mb-1">925 Sterling Silver Guthai Lion Kada For Men/Silver Kada/Silver Bracelet</p>
+                                                                                                                                 <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>7,599.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>11,999.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                               
+                            </div>
+                            <div class="ms-1">6 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/925-pure-silver-chandi-oxidized-hollow-adjustable-tribal-nakkashi-kada-bangle-for-boys-and-men-in-92-5-sterling-silver-gift-for-him/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1000" height="1000" src="https://jamwa.in/wp-content/uploads/2024/01/Nakkshi-kada-pure-sterling-silver-92.5-jamwa-one.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/01/Nakkshi-kada-pure-sterling-silver-92.5-jamwa-one.webp 1000w, https://jamwa.in/wp-content/uploads/2024/01/Nakkshi-kada-pure-sterling-silver-92.5-jamwa-one-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/01/Nakkshi-kada-pure-sterling-silver-92.5-jamwa-one-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/01/Nakkshi-kada-pure-sterling-silver-92.5-jamwa-one-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/01/Nakkshi-kada-pure-sterling-silver-92.5-jamwa-one-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/01/Nakkshi-kada-pure-sterling-silver-92.5-jamwa-one-100x100.webp 100w" sizes="(max-width: 1000px) 100vw, 1000px" />                            </div>
+                            <p class="product-title mb-1">925 Pure Silver Chandi Oxidized Hollow Adjustable Tribal/Nakkashi Kada Bangle For Boys and Men in 92.5 Sterling Silver | Gift For Him |</p>
+                                                                                                                                 <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>5,799.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>9,899.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid" style="height: 16px; width: 16px;" alt="">
+                                                               
+                            </div>
+                            <div class="ms-1">4 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/925-sterling-silver-handmade-chitai-work-lord-shiva-om-namah-shivay-mantra-bracelet-kada/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="1000" height="1000" src="https://jamwa.in/wp-content/uploads/2024/01/om-namo-shivay-kada-silver-92.5-silver-pure-silver-one.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/01/om-namo-shivay-kada-silver-92.5-silver-pure-silver-one.webp 1000w, https://jamwa.in/wp-content/uploads/2024/01/om-namo-shivay-kada-silver-92.5-silver-pure-silver-one-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/01/om-namo-shivay-kada-silver-92.5-silver-pure-silver-one-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/01/om-namo-shivay-kada-silver-92.5-silver-pure-silver-one-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/01/om-namo-shivay-kada-silver-92.5-silver-pure-silver-one-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/01/om-namo-shivay-kada-silver-92.5-silver-pure-silver-one-100x100.webp 100w" sizes="(max-width: 1000px) 100vw, 1000px" />                            </div>
+                            <p class="product-title mb-1">925 Sterling Silver Handmade Chitai Work Lord Shiva &#8220;Om Namah Shivay&#8221; Mantra Bracelet Kada</p>
+                                                                                                                                 <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>7,799.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>12,999.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                <div class="item">
+                    <a href="https://jamwa.in/product/silver-classy-variant-of-floral-design-girls-bracelets/" class="productLink">
+                        <div class="cardProduct">
+                            <div class="overflow-hidden  mb-3">
+                            <img width="879" height="879" src="https://jamwa.in/wp-content/uploads/2024/01/bracelet-for-women-siilver.webp" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" decoding="async" srcset="https://jamwa.in/wp-content/uploads/2024/01/bracelet-for-women-siilver.webp 879w, https://jamwa.in/wp-content/uploads/2024/01/bracelet-for-women-siilver-300x300.webp 300w, https://jamwa.in/wp-content/uploads/2024/01/bracelet-for-women-siilver-150x150.webp 150w, https://jamwa.in/wp-content/uploads/2024/01/bracelet-for-women-siilver-768x768.webp 768w, https://jamwa.in/wp-content/uploads/2024/01/bracelet-for-women-siilver-600x600.webp 600w, https://jamwa.in/wp-content/uploads/2024/01/bracelet-for-women-siilver-100x100.webp 100w" sizes="(max-width: 879px) 100vw, 879px" />                            </div>
+                            <p class="product-title mb-1">Silver Classy Variant of Floral Design Girls Bracelets</p>
+                                                                                                                                 <p class="price mb-0 mb-1 fw-bold"><span class="text-main me-1"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>1,599.00</bdi></span></span> <span
+                                class="text-muted cross-price px-1 d-inline-block"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>2,300.00</bdi></span></span></p>
+                                                                            <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start">
+                                                                                                               
+                            </div>
+                            <div class="ms-1">0 Reviews</div>
+                                    </div>
+                            
+                            <div class="products-tag">
+                                <span>Upto</span>
+                                <p class="mb-0 fw-bold">50% <br>
+                                    OFF</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                                                </div>
+			<div class="d-flex align-item-center justify-content-end">
+				<a href="https://jamwa.in/product-category/silver-sterling-kada/" class="fw-bold text-decoration-none">View All&#8594;</a>
+			</div>
+        </div>
+    </section>
+    
+    <section class="my-4">
+        <div class="container">
+			<a href="https://jamwa.in/product-category/sterling-silver/">
+            <img src="https://jamwa.in/wp-content/uploads/2024/01/92.5-streling-silver.webp" class="img-fluid" alt=""></a>
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="container">
+            <h2 class="mb-4  border-bottom pb-3">Smart Watches </h2>
+            <div class="owl-carousel productCro">
+                                            </div>
+			<div class="d-flex align-item-center justify-content-end">
+				<a href="https://jamwa.in/product-category/airpods/" class="fw-bold text-decoration-none">View All&#8594;</a>
+			</div>
+        </div>
+    </section>
+    <section class="my-4 position-relative sm-none">
+        <div class="container">
+            <video width="100%" height="450" controls poster="img/acrylic-poster.webp">
+                <source src="https://youtu.be/3019jFm3DLQ" type="video/mp4">
+                <source src="" type="video/ogg">
+            </video>
+            <div class="pulse">
+
+            </div>
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="container">
+            <h2 class="mb-4 text-center border-bottom pb-3">Reviews</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-4 mb-2">
+                    <div class="bg-sept p-2 rounded">
+                        <div class="row">
+                            <div class="col-4 d-flex justify-content-center align-items-center">
+                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/google.svg" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-8 d-flex flex-column justify-content-center">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold mb-0 me-2 fs-5">4.8</span>
+                                    <span><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/start-rating.png" class="img-fluid" alt=""></span>
+
+                                </div>
+                                <a href="" class="text-dark">View all review</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-2">
+                    <div class="bg-sept p-2 rounded">
+                        <div class="row">
+                            <div class="col-4 d-flex justify-content-center align-items-center">
+                                <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/trust-piolate.svg" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-8 d-flex flex-column justify-content-center">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold mb-0 me-2 fs-5">4.9</span>
+                                    <span><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/start-rating.png" class="img-fluid" alt=""></span>
+
+                                </div>
+                                <a href="" class="text-dark">View all review</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="owl-carousel reviewCro mt-3">
+                <div class="item bg-sept reviewMain position-relative p-4">
+                    <div class="infoReview mb-3">
+                        <div class="rating d-flex justify-content-start mb-2"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg"
+                                class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start"
+                                alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg"
+                                class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start" alt="">
+                        </div>
+                        <p class="mb-0 text-dark">Dec 22, 2023</p>
+                    </div>
+                    <em>Jamwa.in's curated range of smartwatches, AirPods, and mobile covers combines innovation with style, catering to tech enthusiasts seeking quality and flair in their accessories.</em>
+                    <p class="text-dark fw-bold mb-0 mt-3">Dileep Kumar Kushwaha</p>
+
+                    <div class="bg-main contRev">D</div>
+                </div>
+                <div class="item bg-sept reviewMain position-relative p-4">
+                    <div class="infoReview mb-3">
+                        <div class="rating d-flex justify-content-start mb-2"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg"
+                                class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start"
+                                alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg"
+                                class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start" alt="">
+                        </div>
+                        <p class="mb-0 text-dark">Dec 23, 2023</p>
+                    </div>
+                    <em>Jamwa.in excels in delivering a fusion of trendy designs and practicality, offering an array of smartwatches, AirPods, and mobile covers that prioritize both fashion and device protection.</em>
+                    <p class="text-dark fw-bold mb-0 mt-3">Raju Choudhary</p>
+
+                    <div class="bg-main contRev">R</div>
+                </div>
+                <div class="item bg-sept reviewMain position-relative p-4">
+                    <div class="infoReview mb-3">
+                        <div class="rating d-flex justify-content-start mb-2"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg"
+                                class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start"
+                                alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg"
+                                class="img-fluid start" alt=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/star.svg" class="img-fluid start" alt="">
+                        </div>
+                        <p class="mb-0 text-dark">Dec 19, 2023</p>
+                    </div>
+                    <em>Jamwa.in stands out as a go-to destination for cutting-edge smartwatches, authentic AirPods, and chic mobile covers, ensuring a seamless blend of fashion-forward accessories and technological sophistication.</em>
+                    <p class="text-dark fw-bold mb-0 mt-3">Kamal Swami</p>
+
+                    <div class="bg-main contRev">K</div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+<section style="background: #f0f8ff;">
+        <div class="container">
+            <div id="section">
+
+                <div class="d-flex align-items-center justify-content-between py-4 botomContent" onclick="showRead();">
+                    <h4 class="mb-0">Jamwa.in</h4>
+                    <span class="moreless-button text-main" id="vj">Read more</span>
+
+                </div>
+
+                <div class="moretext py-3 border-top">
+                    <h1 class="text-main">
+						Welcome to Jamwa.in - Your Special Place for Real Silver Jewelry
+					</h1>
+
+<p>
+	At Jamwa.in, we've got beautiful silver jewelry that's totally real. We pick the best quality silver (it's called 92.5 silver) to make our jewelry. We have different kinds of silver jewelry - shiny silver, darkened silver, and old-fashioned silver.
+					</p>
+
+					<h2 class="mt-5 text-main border-bottom pb-3">Our Story</h2>
+
+
+					<p>We started in Jaipur, making and selling beautiful silver jewelry. At first, we sold to shops, but now we sell directly to you!</p>
+					<ul>
+						<li><strong>Jaipur Roots:</strong> Our story begins in Jaipur, a city famous for its silver. We make special 92.5 silver jewelry here. Jaipur’s legacy of crafting silver is in everything we create.</li>
+						<li><strong>From Big to You:</strong> We used to sell to big shops, but now we want you to have our jewelry. That's why we’re selling directly to customers like you. </li>
+						
+						<li><strong>Made and Delivered by Us:</strong> We make our jewelry and deliver it to you using our own courier service. That way, it gets to you quickly and safely. </li>
+						
+						<li><strong>Making It Easy for You:</strong> We changed things up so you can buy our amazing silver jewelry online. It's easy and fast. Just pick what you love, and we'll send it straight to you. </li>
+					</ul>
+					 
+					 
+					 
+
+					 
+
+					<h2 class="mt-5 text-main border-bottom pb-3">Our Jewelry Collection</h2>
+
+					<p>At Jamwa.in, we have lots of pretty things made of special silver from India. We make rings, pendants (that's like a hanging necklace), bangles, bracelets, chains (they go around your neck), and other cool stuff, all from pure sterling silver 92.5.</p>
+					<ul><li><strong>Silver Necklaces:</strong> Our <a href="https://jamwa.in/product-category/necklace/" title="https://jamwa.in/product-category/necklace/">silver necklaces</a> come in various styles, from delicate alphabet chains to traditional statement pieces. They are crafted with intricate designs inspired by Indian culture and architecture, on hallmarked 925 silver with gold plating, ensuring their quality.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><strong>Silver Rings:</strong> Our selection of <a href="https://jamwa.in/product-category/rings/" title="https://jamwa.in/product-category/rings/">silver rings</a> includes a range of timeless designs featuring stunning gemstones and intricate patterns crafted with care by our master artisans.&nbsp;&nbsp;&nbsp;&nbsp;</li><li><strong>Silver Bangles:</strong> Our <a href="https://jamwa.in/product-category/bracelets/" title="https://jamwa.in/product-category/bracelets/">silver bangles</a> feature the best quality gemstones and intricate designs that will make you stand out in a crowd. They are made with meticulous attention to detail by our karigars, ensuring the best quality possible.&nbsp;&nbsp;</li> <li><strong>Silver Earrings:</strong> Our <a href="https://jamwa.in/product-category/earings/" title="https://jamwa.in/product-category/earings/">silver earrings</a>, including <a href="https://jamwa.in/product-category/studs/" title="https://jamwa.in/product-category/studs/">studs</a>, hoops, and drop earrings, each crafted with exquisite detailing. Our silver earrings feature semi-precious stones, freshwater pearls, and polki stones, perfect for any occasion.&nbsp;&nbsp;</li><li><strong>Silver Choker:</strong> Our silver choker collection emphasises statement pieces that are perfect for adding a touch of luxury to any look. Each piece is crafted from premium silver and features intricate designs that make you look unique.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><strong>Silver Pendant Set:</strong> Our <a href="https://jamwa.in/product-category/pendant/" title="https://jamwa.in/product-category/pendant/">silver pendant sets</a> are the epitome of grandeur, featuring stunning designs and premium quality materials. They are flawless and will elevate any outfit of your choice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></ul>
+<h2 class="mt-5 text-main border-bottom pb-3">
+	Purity & Authenticity: Ensuring Genuine 92.5 Silver
+					</h2>
+					
+					<ul>
+						<li><strong>92.5 Hallmark: A Seal of Quality:</strong> At Jamwa.in, our commitment to quality starts with the 92.5 hallmark stamped on each piece of silver jewelry. This hallmark signifies that our jewelry is made of 92.5% pure silver, assuring you of its exceptional quality. This mark is a guarantee that you’re getting genuine sterling silver crafted with precision and care.</li>
+						<li><strong>Certification Process: Guarantees of Purity:</strong> Our certification process is rigorous, ensuring the purity of every piece of jewelry we offer. Before reaching your hands, each item undergoes meticulous testing and examination to verify its silver content. We work closely with authorized certification bodies to validate the authenticity and purity of our silver jewelry, providing you with the assurance you deserve. </li>
+						
+						<li><strong>Authenticity Assurance: Genuine Craftsmanship:</strong> We take pride in the authenticity of our pieces. Our skilled artisans pour their expertise and passion into crafting each design, ensuring that every creation reflects genuine craftsmanship. From intricate detailing to the overall finish, our jewelry stands as a testament to authenticity, promising you unique, genuine pieces of silver jewelry. </li>
+						
+						<li><strong>Your Confidence in Every Purchase:</strong> We want you to shop with confidence, knowing that every piece you select from Jamwa.in is not only beautiful but also a genuine representation of quality and purity. Our hallmark, certification process, and dedication to authentic craftsmanship are the pillars of trust we build with every customer.</li>
+					</ul>
+ 
+
+					 
+
+					 
+					
+					<h2 class="mt-5 text-main border-bottom pb-3">
+	Craftsmanship & Quality: Making Beautiful Silver Jewelry
+					</h2>
+					<ul>
+						<li><strong>Skilled Artists: Masters of Making:</strong> Our artists at Jamwa.in are like silver wizards! They're super skilled and creative, and they make each piece of jewelry really special. They use their talents to create jewelry that's not just pretty but also a work of art.</li>
+						
+						<li><strong>Top-Quality Stuff:</strong> We make sure to use the best materials for our jewelry. Each piece is made with real 92.5 silver, and we pay extra attention to making sure every detail is just right. From the start to the finish, we're all about making jewelry that's perfect.</li>
+						
+						<li><strong>Paying Attention to Little Things:</strong> We’re all about the details! Our artists carefully check every twist and turn, every little pattern, and every shiny bit. This attention to detail is what makes our jewelry stand out, promising you something truly beautiful and special.</li>
+						
+						<li><strong>Creating Elegance & Beauty:</strong> Our artists put their hearts into crafting each piece. They make sure that when you wear our jewelry, you're not just wearing something nice; you're wearing something made with love and dedication.</li>
+						<li><strong>Creating Elegance & Beauty:</strong> Our artists put their hearts into crafting each piece. They make sure that when you wear our jewelry, you're not just wearing something nice; you're wearing something made with love and dedication.</li>
+					</ul>
+					 
+ <p>At Jamwa.in, we take huge pride in the hard work and talent of our artists. Each piece of silver jewelry you choose from us is a symbol of their amazing craftsmanship and dedication to making beautiful things for you.</p>
+					 <h2 class="mt-5 text-main border-bottom pb-3">
+	Certifications & Policies: Your Trust, Our Commitment
+					</h2>
+					
+					<ul>
+						<li><strong>Shipping Policy: Quick and Reliable:</strong> Our shipping policy is all about getting your beautiful silver jewelry to you swiftly and securely. We strive to ensure that your orders are processed promptly, and our reliable shipping partners deliver your treasures to your doorstep with care.</li>
+						<li><strong>Returns Policy: Your Satisfaction Matters:</strong> We want you to be absolutely delighted with your purchase. If for any reason you're not completely satisfied with your jewelry, we have a hassle-free returns policy. You can return or exchange your piece within a specified period, ensuring your satisfaction is our priority.</li>
+						<li><strong>Privacy Policy: Your Information, Your Trust</strong> Your privacy matters to us. Our privacy policy safeguards your personal information. We're committed to keeping your details secure and using them only to provide you with the best shopping experience possible.</li>
+						<li><strong>Terms of Service: Transparency & Clarity</strong> Our terms of service outline the rules and guidelines for using our website and purchasing our products. We believe in transparency and fairness, ensuring that you're aware of the terms when engaging with Jamwa.in.</li>
+						<li><strong>Customer Care: Your Needs, Our Support</strong> We're here for you! If you have any questions about our certifications or policies, or if you need assistance with anything related to your order, our dedicated customer support team is just an email or call away. We're committed to making sure your experience with us is smooth and enjoyable.</li>
+						<li><strong>Your Confidence in Our Commitment</strong> At Jamwa.in, we uphold the highest standards in certifications and policies, ensuring that your trust in us is well-placed. Our policies are designed to prioritize your satisfaction, privacy, and confidence in every interaction you have with our brand.</li>
+					</ul>
+					 
+ 
+                </div>
+            </div>
+
+        </div>
+    </section>
+<section class="py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/amazon-best-seller.webp" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/flipkart-best-seller.webp" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/meesho-trusted-partner.webp" class="img-fluid" alt="">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="reviewBg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mobileFooter pt-5 ">
+                    <div class="logo mb-3">
+                        <a href=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/jamwa-logo.svg" class="img-fluid" alt=""></a>
+                    </div>
+                    <p>Our track record of delivering quality products, excellent customer service, and secure payment options ensures your trust in our e-shopping experience.</p>
+                    <h6 class="mb-3">Follow Us On Social:</h6>
+                    <div class="d-flex">
+                        <ul class="list-unstyled socialIcon d-flex">
+                            <li><a href="https://www.instagram.com/jamwa_in/"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/instagram.svg" class="img-fluid" alt=""></a></li>
+                            <li><a href=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/facebook.svg" class="img-fluid" alt=""></a></li>
+                            <li><a href=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/youtube.svg" class="img-fluid" alt=""></a></li>
+                            <li><a href=""><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/pintrest.svg" class="img-fluid" alt=""></a></li>
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 pt-5">
+                    <h5 class="mb-4 footUl" onclick="showFoot(quick)">Quick Links</h5>
+                    <ul class="list-unstyled hiFoot footLink" id="quick">
+                        <li><a href="https://jamwa.in/about-jamwa-in/">About us</a></li>
+                        <li><a href="https://jamwa.in/privacy-policy-2/">Privacy Policy</a></li>
+                        <li><a href="https://jamwa.in/refund_returns/">Return & Refund Policy</a></li>
+                        <li><a href="https://jamwa.in/terms-conditions/">Terms & Conditions</a></li>
+                        <li><a href="https://jamwa.in/shipping-policy/">Shipping Policy</a></li>
+                        <li><a href="https://jamwa.in/">Contact us</a></li>
+                        <li><a href="https://jamwa.in/cash-on-delivery-cod-policy/">Cash On Delivery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 m-foot pt-5">
+                    <h5 class="mb-4 footUl" onclick="showFoot(decor)">Accessories</h5>
+                    <ul class="list-unstyled hiFoot footLink" id="decor">
+                    <li><a href="https://jamwa.in/product-category/smart-watches/">Smart Watches</a></li>
+                                            <li><a href="https://jamwa.in/product-category/airpods/">Air Buds</a></li>
+                                            <li><a href="https://jamwa.in/product-category/airpods/">Air Pods</a></li>
+                                            <li><a href="https://jamwa.in/product-category/neckband/">Neckband</a></li>
+                                            <li><a href="https://jamwa.in/product-category/mobile-cover/">Mobile Cover</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 m-foot pt-5">
+                    <h5 class="mb-4 footUl" onclick="showFoot(jewelery)">Sterling Jewelry</h5>
+                    <ul class="list-unstyled hiFoot footLink" id="jewelery">
+                        <li><a href="https://jamwa.in/product-category/bangles/">Bangles</a></li>
+                                           
+                                            <li><a href="https://jamwa.in/product-category/earings/">Earings</a></li>
+                                            <li><a href="https://jamwa.in/product-category/chains/">Chains</a></li>
+<li><a href="https://jamwa.in/product-category/rings/">Rings</a></li>
+											 
+<li><a href="https://jamwa.in/product-category/mangal-sutra/">Mangal Sutra</a></li>
+											<li><a href="https://jamwa.in/product-category/necklace/">Necklace</a></li>
+											<li><a href="https://jamwa.in/product-category/pendant/">Pendant</a></li>
+											
+										<li><a href="https://jamwa.in/product-category/silver-sterling-kada/">Silver Kadas</a></li>
+                                            <li><a href="https://jamwa.in/product-category/bracelets/">Bracelets</a></li>
+<li><a href="https://jamwa.in/product-category/watch/">Watch</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-main py-2 text-white text-center mt-3">
+            <div class="container">
+                <p class="mb-0">© 2024 Jamwa. All Rights Reserved.</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+<a href="https://wa.me/916376109144" class="position-fixed bottom-0 end-0 m-4 z-most text-decoration-none"><img src="https://jamwa.in/wp-content/themes/hello-elementor/assets/img/whats-app-chat-support.svg" class="img-fluid" alt="WhatsApp Support"></a>
+    
+
+
+	<script type="rocketlazyloadscript">
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=8.6.1" id="sourcebuster-js-js" defer></script>
+<script id="wc-order-attribution-js-extra">
+var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"ajaxurl":"https:\/\/jamwa.in\/wp-admin\/admin-ajax.php","prefix":"wc_order_attribution_","allowTracking":true},"fields":{"source_type":"current.typ","referrer":"current_add.rf","utm_campaign":"current.cmp","utm_source":"current.src","utm_medium":"current.mdm","utm_content":"current.cnt","utm_id":"current.id","utm_term":"current.trm","session_entry":"current_add.ep","session_start_time":"current_add.fd","session_pages":"session.pgs","session_count":"udata.vst","user_agent":"udata.uag"}};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=8.6.1" id="wc-order-attribution-js" defer></script>
+<script id="aws-script-js-extra">
+var aws_vars = {"sale":"Sale!","sku":"SKU: ","showmore":"View all results","noresults":"Nothing found"};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://jamwa.in/wp-content/plugins/advanced-woo-search/assets/js/common.min.js?ver=3.02" id="aws-script-js" defer></script>
+<script>window.lazyLoadOptions={elements_selector:"iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://jamwa.in/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script><script type="rocketlazyloadscript">window.addEventListener('DOMContentLoaded', function() {
+       
+	   $('.productCro').owlCarousel({
+    loop: true,
+    margin: 15,
+    nav: true,
+    dots: false,
+    responsive: {
+        0: {
+            items: 2
+        },
+        600: {
+            items: 3
+        },
+        1000: {
+            items: 5
+        }
+    }
+});
+
+
+$('.reviewCro').owlCarousel({
+    loop: true,
+    margin: 15,
+    nav: false,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 2
+        },
+        1000: {
+            items: 3
+        }
+    }
+});
+$('.mobileCollection').owlCarousel({
+    loop: true,
+    margin: 15,
+    nav: false,
+    items: 4,
+});
+	
+$('.crousalCol').owlCarousel({
+    loop: true,
+    margin: 15,
+    autoplay: true,
+    dots: false,
+    nav: false,
+    responsive: {
+        0: {
+            items: 2
+        },
+        600: {
+            items: 2
+        },
+        1000: {
+            items: 3
+        }
+    }
+});
+ $('.vjNew').owlCarousel({
+    loop: true,
+    margin: 24,
+	 autoplay: true,
+    nav: false,
+	 autoplay: true,
+        lazyLoad: true,
+        smartSpeed: 1000,
+        autoplayTimeout: 2000,
+	 autoplayHoverPause:true,
+    responsive: {
+        0: {
+            items: 3
+        },
+        600: {
+            items: 4
+        },
+        1000: {
+            items: 7
+        }
+    }
+});
+		});</script>
+</body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1710904194 -->
